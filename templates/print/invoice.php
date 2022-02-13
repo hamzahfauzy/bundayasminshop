@@ -40,15 +40,13 @@
         </tr>
         <?php $all_payment = 0; foreach($transaction->payments as $payment): $all_payment += $payment->subtotal;?>
         <tr>
-            <td colspan="3"><?=date("d/m/Y",strtotime($payment->created_at))?></td>
-        </tr>
-        <tr>
-            <td colspan="3" style="text-align:right;"><?=number_format($payment->subtotal)?></td>
+            <td><?=date("d/m/Y",strtotime($payment->created_at))?></td>
+            <td colspan="2" style="text-align:right;"><?=number_format($payment->subtotal)?></td>
         </tr>
         <?php endforeach ?>
         <tr>
-            <td style="padding:5px 0px;"><b>Total</b></td>
-            <td colspan="2" style="padding:5px 0px;text-align:right;"><?=number_format($all_payment)?></td>
+            <td style="padding:5px 0px;border-top:1px dashed #000;"><b>Total</b></td>
+            <td colspan="2" style="padding:5px 0px;text-align:right;border-top:1px dashed #000;"><?=number_format($all_payment)?></td>
         </tr>
         <tr>
             <td style="border-top:1px dashed #000;border-bottom:1px dashed #000;padding:5px 0px;"><b>Sisa</b></td>
