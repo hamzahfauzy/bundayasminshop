@@ -1,4 +1,4 @@
-<div style="font-size:7px;">
+<div style="font-size:12px;width:58mm">
     <br>
     <div style="text-align:center">
         <b><?=app('name')?></b><br>
@@ -6,7 +6,7 @@
     </div>
     <br>
 
-    <table border="0" width="100%" style="width:100%;font-size:7px;">
+    <table border="0" width="100%" style="width:100%;font-size:12px;">
         <tr>
             <td colspan="2" width="85" style="border-top:1px dashed #000;border-bottom:1px dashed #000;padding:5px 0px;">
             <?=date('d-m-Y H:i:s')?>
@@ -70,3 +70,7 @@
         </tr>
     </table>
 </div>
+
+<script>
+    window.onload = function() { window.print(); }
+</script>

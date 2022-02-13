@@ -37,20 +37,22 @@ if($transaction)
         'id' => $transaction->customer_id
     ]);
 
-    $height = (count($transaction->items) * 3) + 100;
-    if($height > 290) $height = 290;
+    // $height = (count($transaction->items) * 3) + 100;
+    // if($height > 290) $height = 290;
 
-    $html = load_templates('print/invoice',compact('transaction'),1);
+    // $html = load_templates('print/invoice',compact('transaction'),1);
 
-    $html2pdf = new Html2Pdf('P',[
-        '57',
-        $height
-    ]);
-    $html2pdf->writeHTML($html);
-    if(isset($_GET['print']))
-        $html2pdf->output();
-    else
-        $html2pdf->output($file_dest,'F');
+    return compact('transaction');
+
+    // $html2pdf = new Html2Pdf('P',[
+    //     '57',
+    //     $height
+    // ]);
+    // $html2pdf->writeHTML($html);
+    // if(isset($_GET['print']))
+    //     $html2pdf->output();
+    // else
+    //     $html2pdf->output($file_dest,'F');
 
 }
 
