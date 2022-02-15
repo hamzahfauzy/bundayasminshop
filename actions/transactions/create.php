@@ -22,7 +22,7 @@ if(request() == 'POST')
         'customer_id' => $customer->id
     ]);
 
-    if(!$transaction || empty($transaction))
+    if(empty($transaction))
     {
         $insert_data = [
             'customer_id' => $customer->id,
