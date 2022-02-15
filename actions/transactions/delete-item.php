@@ -12,8 +12,7 @@ $transaction = $db->single('transactions',[
 ]);
 
 $db->update('transactions',[
-    'total' => $transaction->total - $item->subtotal,
-    'return_total' => $transaction->total + $transaction->return_total
+    'total' => $transaction->total - $item->subtotal
 ],[
     'id' => $transaction->id
 ]);
