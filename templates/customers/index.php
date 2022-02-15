@@ -46,7 +46,7 @@
                                             <td><?=$data->name?></td>
                                             <td><?=$data->address?></td>
                                             <td>
-                                                <a href="index.php?r=customers/view&id=<?=$data->id?>" class="btn btn-sm btn-success"><i class="fas fa-eye"></i> Transaksi</a>
+                                                <a href="index.php?r=customers/transaction-view&id=<?=$data->id?>" class="btn btn-sm btn-success"><i class="fas fa-eye"></i> Transaksi</a>
                                                 <a href="index.php?r=customers/edit&id=<?=$data->id?>" class="btn btn-sm btn-warning"><i class="fas fa-pencil-alt"></i> Edit</a>
                                                 <a href="index.php?r=customers/delete&id=<?=$data->id?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Hapus</a>
                                             </td>
