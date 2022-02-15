@@ -28,6 +28,10 @@
                                     <input type="text" name="products[name]" class="form-control" required>
                                 </div>
                                 <div class="form-group">
+                                    <label for="">Stok</label>
+                                    <input type="number" name="products[purchase]" class="form-control" required>
+                                </div>
+                                <div class="form-group">
                                     <label for="">Harga Beli</label>
                                     <input type="number" name="products[purchase]" class="form-control" required>
                                 </div>

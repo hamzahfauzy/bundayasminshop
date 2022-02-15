@@ -37,6 +37,7 @@ CREATE TABLE products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     code VARCHAR(100) NOT NULL,
+    stok INT NULL,
     purchase DOUBLE NOT NULL,
     sale DOUBLE NOT NULL,
     pic VARCHAR(100) NULL,
