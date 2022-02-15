@@ -28,6 +28,10 @@
                                     <input type="text" name="products[name]" class="form-control" value="<?=$data->name?>" required>
                                 </div>
                                 <div class="form-group">
+                                    <label for="">Stok</label>
+                                    <input type="number" name="products[stok]" class="form-control" required value="<?=$data->stok?>">
+                                </div>
+                                <div class="form-group">
                                     <label for="">Harga Beli</label>
                                     <input type="number" name="products[purchase]" class="form-control" value="<?=$data->purchase?>" required>
                                 </div>

@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Stok</label>
-                                    <input type="number" name="products[purchase]" class="form-control" required>
+                                    <input type="number" name="products[stok]" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Harga Beli</label>
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Gambar</label>
-                                    <input type="file" name="products[pic]" class="form-control" required>
+                                    <input type="file" name="products[pic]" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <button class="btn btn-primary">Submit</button>
