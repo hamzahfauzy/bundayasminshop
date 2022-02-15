@@ -37,6 +37,8 @@ if(request() == 'POST')
     {
         $db->update('transactions',[
             'total' => $transaction->total + $_POST['price']
+        ],[
+            'id' => $transaction->id
         ]);
     }
 
