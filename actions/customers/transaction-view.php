@@ -18,7 +18,7 @@ if(isset($_POST['amount']) && !empty($_POST['amount']))
         'transaction_id' => $transaction->id,
         'subtotal' => $_POST['amount'],
         'description' => 'Pembayaran ke '.(count($all_payments)+1),
-        'created_at'  => $_POST['date']
+        'created_at'  => $_POST['date'].' '.date('H:i:s')
     ]);
 
     set_flash_msg(['success'=>'Pembayaran Berhasil']);
