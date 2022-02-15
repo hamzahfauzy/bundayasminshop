@@ -1,16 +1,17 @@
 <?php
-use Spipu\Html2Pdf\Html2Pdf;
-
-$inv_code = $_GET['inv_code'];
-$file_dest = __DIR__ .'/../../public/inv_print/'.$inv_code.'.pdf';
+// use Spipu\Html2Pdf\Html2Pdf;
 
 $conn = conn();
 $db   = new Database($conn);
 
 
 $transaction = $db->single('transactions',[
-    'inv_code' => $inv_code
+    'customer_id' => $_GET['id']
 ]);
+
+// $inv_code = $transaction->inv_code;
+
+// $file_dest = __DIR__ .'/../../public/inv_print/'.$inv_code.'.pdf';
 
 if($transaction)
 {
