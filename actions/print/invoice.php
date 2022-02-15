@@ -6,7 +6,7 @@ $db   = new Database($conn);
 
 
 $transaction = $db->single('transactions',[
-    'customer_id' => $_GET['id']
+    'customer_id' => $_GET['customer_id']
 ]);
 
 // $inv_code = $transaction->inv_code;
