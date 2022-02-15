@@ -57,7 +57,7 @@
                                                 <?= number_format($data->total) ?>
                                             </td>
                                             <td>
-                                                <a href="index.php?r=transactions/view&id=<?=$data->id?>" class="btn btn-sm btn-success"><i class="fas fa-eye"></i> Lihat</a>
+                                                <a href="index.php?r=customers/transaction-view&id=<?=$data->customer_id?>" class="btn btn-sm btn-success"><i class="fas fa-eye"></i> Lihat</a>
                                             </td>
                                         </tr>
                                         <?php endforeach ?>
