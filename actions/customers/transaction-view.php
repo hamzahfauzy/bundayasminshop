@@ -43,6 +43,8 @@ if($transaction)
     
     $transaction->payments = $db->all('transaction_payments',[
         'transaction_id' => $transaction->id
+    ],[
+        'created_at' => 'desc'
     ]);
 }
 

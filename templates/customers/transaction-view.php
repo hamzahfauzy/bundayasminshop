@@ -89,8 +89,8 @@
                                 <div class="alert alert-success"><?=$success_msg?></div>
                             <?php endif ?>
                             <form action="" method="post">
-                                <div class="d-flex">
-                                    <input type="text" class="form-control" name="amount" placeholder="Nominal Pembayaran" required>
+                                <div class="d-lg-flex d-sm-block">
+                                    <input type="number" class="form-control" name="amount" placeholder="Nominal Pembayaran" required>
                                     &nbsp;
                                     <input type="date" class="form-control" name="date" placeholder="Tanggal Pembayaran" required>
                                 </div>
