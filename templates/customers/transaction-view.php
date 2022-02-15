@@ -63,6 +63,7 @@
                                             <th>Jumlah</th>
                                             <th>Harga</th>
                                             <th>Sub Total</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -75,14 +76,7 @@
                                             <td><?=$item->qty?></td>
                                             <td><?=number_format($item->subtotal / $item->qty)?></td>
                                             <td><?=number_format($item->subtotal)?></td>
-                                            <?php /*
-                                            <td>
-                                                <?php if($item->status == 'retur'): ?>
-                                                <i>Barang dikembalikan</i>
-                                                <?php else: ?>
-                                                <a href="index.php?r=transactions/retur&id=<?=$item->id?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Retur Barang</a>
-                                                <?php endif ?>
-                                            </td> */ ?>
+                                            <td><a href="index.php?r=transactions/delete-item&id=<?=$item->id?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Hapus</a></td>
                                         </tr>
                                         <?php endforeach; endif;  ?>
                                     </tbody>
@@ -95,7 +89,11 @@
                                 <div class="alert alert-success"><?=$success_msg?></div>
                             <?php endif ?>
                             <form action="" method="post">
-                                <input type="text" class="form-control" name="amount" placeholder="Nominal Pembayaran" required>
+                                <div class="d-flex">
+                                    <input type="text" class="form-control" name="amount" placeholder="Nominal Pembayaran" required>
+                                    &nbsp;
+                                    <input type="date" class="form-control" name="date" placeholder="Tanggal Pembayaran" required>
+                                </div>
                                 <button class="btn btn-primary btn-block">Buat Pembayaran</button>
                             </form>
                             <p></p>
@@ -106,6 +104,7 @@
                                             <th width="20px">#</th>
                                             <th>Tanggal</th>
                                             <th>Jumlah</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -116,6 +115,7 @@
                                             </td>
                                             <td><?=$payment->created_at?></td>
                                             <td><?=number_format($payment->subtotal)?></td>
+                                            <td><a href="index.php?r=transactions/delete-payment&id=<?=$payment->id?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Hapus</a></td>
                                         </tr>
                                         <?php endforeach ?>
                                     </tbody>

@@ -17,7 +17,8 @@ if(isset($_POST['amount']) && !empty($_POST['amount']))
     $db->insert('transaction_payments',[
         'transaction_id' => $transaction->id,
         'subtotal' => $_POST['amount'],
-        'description' => 'Pembayaran ke '.(count($all_payments)+1)
+        'description' => 'Pembayaran ke '.(count($all_payments)+1),
+        'created_at'  => $_POST['date']
     ]);
 
     set_flash_msg(['success'=>'Pembayaran Berhasil']);
