@@ -153,7 +153,7 @@
             var transactionItems = "[C]--------------------------------\n";
             transaction.items.forEach(item=>{
                 transactionItems += `[L]${item.product.name}\n`
-                transactionItems += `[L]${item.qty} x ${item.subtotal/item.qty} [R]${item.subtotal}\n`
+                transactionItems += `[L]${item.qty} x ${formatter.format(item.subtotal/item.qty)} [R]${formatter.format(item.subtotal)}\n`
             })
             transactionItems += "[C]--------------------------------\n";
 
@@ -165,7 +165,7 @@
 
                 allPayment += parseInt(payment.subtotal);
 
-                transactionPayments += `[L]${payment.created_at} [R]${payment.subtotal}\n`
+                transactionPayments += `[L]${payment.created_at} [R]${formatter.format(payment.subtotal)}\n`
             })
 
             transactionPayments += "[C]--------------------------------\n";
