@@ -8,7 +8,7 @@
                         <h5 class="text-white op-7 mb-2">Memanajemen data transaksi kustomer</h5>
                     </div>
                     <div class="ml-md-auto py-2 py-md-0">
-                        <a href="index.php?r=print/invoice&customer_id=<?=$customer->id?>&print=true" target="_blank" class="btn btn-default btn-round">Cetak Struk</a>
+                        <button class="btn btn-default btn-round" onclick="printInvoice()">Cetak Struk</button>
                         <a href="index.php?r=customers/index" class="btn btn-warning btn-round">Kembali</a>
                     </div>
                 </div>
@@ -129,3 +129,57 @@
         </div>
     </div>
 <?php load_templates('layouts/bottom') ?>
+
+<script>
+
+    function printInvoice(){
+        if(typeof(Android) === "undefined") 
+        {
+            var customerId = <?=$customer->id?>;
+            window.open("index.php?r=print/invoice&customer_id="+customerId+"&print=true" , '_blank');
+        }
+        else
+        {
+            var transaction = <?=json_encode($transaction)?>;
+
+            var transactionItems = "[C]--------------------------------\n";
+            transaction.items.forEach(item=>{
+                transactionItems += `[L]${item.product.name}\n`
+                transactionItems += `[L]${item.qty} x ${item.subtotal/item.qty} [R]${item.subtotal}\n`
+            })
+            transactionItems += "[C]--------------------------------\n";
+
+            var transactionPayments = "[C]--------------------------------\n";
+
+            var allPayment = 0;
+            
+            transaction.payments.forEach(payment=>{
+
+                allPayment += payment.subtotal;
+
+                transactionPayments += `[L]${payment.created_at} [R]${payment.subtotal}\n`
+            })
+
+            transactionPayments += "[C]--------------------------------\n";
+
+            var printText = "[C]<b><?=app('name')?></b>\n" +
+                            "[C]<?=app('address')?>\n" +
+                            "[C]<?=app('phone')?>\n" +
+                            "[C]--------------------------------\n" +
+                            "[C]<?=date('d/m/Y H:i')?>\n" +
+                            transactionItems +
+                            `[L]<b>Total</b> [R]${transaction.total}\n` +
+                            "[C]--------------------------------\n" +
+                            "[C]Pembayaran\n" +
+                            transactionPayments +
+                            `[L]<b>Total</b> [R]${allPayment}\n` +
+                            "[C]--------------------------------\n" +
+                            `[L]<b>Sisa</b> [R]${transaction.total-allPayment}\n` +
+                            "[C]--------------------------------\n\n" +
+                            "[C]** <?=$transaction->inv_code.' / '.substr(auth()->user->name,0,10)?> **"
+                            ;
+            Android.printInvoice(printText);
+        }
+    }
+
+</script>
