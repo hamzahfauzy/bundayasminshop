@@ -155,7 +155,7 @@
             
             transaction.payments.forEach(payment=>{
 
-                allPayment += payment.subtotal;
+                allPayment += parseInt(payment.subtotal);
 
                 transactionPayments += `[L]${payment.created_at} [R]${payment.subtotal}\n`
             })
