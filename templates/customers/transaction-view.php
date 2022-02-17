@@ -131,6 +131,14 @@
 <?php load_templates('layouts/bottom') ?>
 
 <script>
+    var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'IDR',
+
+    // These options are needed to round to whole numbers if that's what you want.
+    //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+    //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+    });
 
     function printInvoice(){
         if(typeof(Android) === "undefined") 
@@ -168,13 +176,13 @@
                             "[C]--------------------------------\n" +
                             "[C]<?=date('d/m/Y H:i')?>\n" +
                             transactionItems +
-                            `[L]<b>Total</b> [R]${transaction.total}\n` +
+                            `[L]<b>Total</b> [R]${formatter.format(transaction.total)}\n` +
                             "[C]--------------------------------\n" +
                             "[C]Pembayaran\n" +
                             transactionPayments +
-                            `[L]<b>Total</b> [R]${allPayment}\n` +
+                            `[L]<b>Total</b> [R]${formatter.format(allPayment)}\n` +
                             "[C]--------------------------------\n" +
-                            `[L]<b>Sisa</b> [R]${transaction.total-allPayment}\n` +
+                            `[L]<b>Sisa</b> [R]${formatter.format(transaction.total-allPayment)}\n` +
                             "[C]--------------------------------\n\n" +
                             "[C]** <?=$transaction->inv_code.' / '.substr(auth()->user->name,0,10)?> **"
                             ;
