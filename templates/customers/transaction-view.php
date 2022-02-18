@@ -184,7 +184,7 @@
                             "[C]--------------------------------\n" +
                             `[L]<b>Sisa</b> [R]${formatter.format(transaction.total-allPayment)}\n` +
                             "[C]--------------------------------\n\n" +
-                            "[C]** <?=$transaction->inv_code.' / '.substr(auth()->user->name,0,10)?> **"
+                            "[C]** <?=$transaction->inv_code.' / '.substr($customer->name,0,10)?> **"
                             ;
             Android.printInvoice(printText);
         }
