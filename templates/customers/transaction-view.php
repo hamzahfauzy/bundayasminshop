@@ -131,19 +131,12 @@
 <?php load_templates('layouts/bottom') ?>
 
 <script>
-    // var formatter = new Intl.NumberFormat('en-US', {
-    // style: 'currency',
-    // currency: 'IDR',
+    var formatter = new Intl.NumberFormat('en-US', {});
 
-    // // These options are needed to round to whole numbers if that's what you want.
-    // //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-    // //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
-    // });
-
-    function formatter(str)
-    {
-        return str.toLocaleString()
-    }
+    // function formatter(str)
+    // {
+    //     return str.toLocaleString
+    // }
 
     function printInvoice(){
         if(typeof(Android) === "undefined") 
@@ -158,7 +151,7 @@
             var transactionItems = "[C]--------------------------------\n";
             transaction.items.forEach(item=>{
                 transactionItems += `[L]${item.product.name}\n`
-                transactionItems += `[L]${item.qty} x ${formatter(item.subtotal/item.qty)} [R]${formatter(""+item.subtotal)}\n`
+                transactionItems += `[L]${item.qty} x ${formatter.format(item.subtotal/item.qty)} [R]${formatter.format(item.subtotal)}\n`
             })
             transactionItems += "[C]--------------------------------\n";
 
@@ -170,7 +163,7 @@
 
                 allPayment += parseInt(payment.subtotal);
 
-                transactionPayments += `[L]${payment.created_at} [R]${formatter(""+payment.subtotal)}\n`
+                transactionPayments += `[L]${payment.created_at} [R]${formatter.format(payment.subtotal)}\n`
             })
 
             transactionPayments += "[C]--------------------------------\n";
@@ -181,13 +174,13 @@
                             "[C]--------------------------------\n" +
                             "[C]<?=date('d/m/Y H:i')?>\n" +
                             transactionItems +
-                            `[L]<b>Total</b> [R]${formatter(transaction.total)}\n` +
+                            `[L]<b>Total</b> [R]${formatter.format(transaction.total)}\n` +
                             "[C]--------------------------------\n" +
                             "[C]Pembayaran\n" +
                             transactionPayments +
-                            `[L]<b>Total</b> [R]${formatter(allPayment)}\n` +
+                            `[L]<b>Total</b> [R]${formatter.format(allPayment)}\n` +
                             "[C]--------------------------------\n" +
-                            `[L]<b>Sisa</b> [R]${formatter(transaction.total-allPayment)}\n` +
+                            `[L]<b>Sisa</b> [R]${formatter.format(transaction.total-allPayment)}\n` +
                             "[C]--------------------------------\n\n" +
                             "[C]** <?=$transaction->inv_code.' / '.substr($customer->name,0,10)?> **"
                             ;
